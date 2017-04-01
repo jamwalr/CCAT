@@ -37,7 +37,7 @@ public class DBConnec implements Filter {
 		// place your code here
 
 		// pass the request along the filter chain
-		DBConnection.createInstance();
+		DBConnection.getInstance();
 		chain.doFilter(request, response);
 	}
 

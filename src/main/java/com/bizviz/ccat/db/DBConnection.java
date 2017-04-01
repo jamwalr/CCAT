@@ -27,7 +27,7 @@ public class DBConnection {
 		}
 	}
 	
-	public static DBConnection createInstance(){
+	public static DBConnection getInstance(){
 		if(connection == null){
 			synchronized (connection) {
 				if (connection == null) {
@@ -39,7 +39,7 @@ public class DBConnection {
 	}
 	
 	public Connection getConnection() {
-		createInstance();
+		getInstance();
 		return connection.dbConn;
 	}
 	

@@ -1,13 +1,17 @@
 package com.bizviz.ccat.control;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bizviz.ccat.db.DataLayer;
 import com.bizviz.ccat.modal.Test;
 import com.bizviz.ccat.modal.User;
+import com.bizviz.ccat.util.CCATUtil;
 
 /**
  * Servlet implementation class Set_Test
@@ -48,6 +52,16 @@ public class Set_Test extends HttpServlet {
 		String expiryDate = request.getParameter("exam_expiry");
 		
 		Test test = new Test(user,startDate,expiryDate); 
+		
+		DataLayer.createTest(test);
+		String URL = CCATUtil.createURL(test, request);
+		request.setAttribute("URL", URL);
+		
+		if(DataLayer.createTest(test)){
+			request.getRequestDispatcher("/test_created.jsp").forward(request, response);
+		}
+		
+		
 	}
 
 }
