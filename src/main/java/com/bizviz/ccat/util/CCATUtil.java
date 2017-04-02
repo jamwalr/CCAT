@@ -10,7 +10,7 @@ public class CCATUtil {
 		
 		StringBuilder URL = new StringBuilder();
 		URL.append(req.getRequestURI().toString());
-		URL.append("begin_test.jsp?uid="+test.getUid().getUid()+"&tid="+test.getTestId());
+		URL.append("begin_test.jsp?uid="+test.getUser().getUid()+"&tid="+test.getTestId());
 		
 		return URL.toString();
 	}

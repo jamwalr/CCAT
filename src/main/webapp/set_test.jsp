@@ -14,12 +14,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<FORM action="set_test" method="post">
-		Name: <INPUT type="text"/>
-		Email id: <INPUT type="email"/>
-		Exam Start Date: <INPUT type="date"/>
-		Exam Expiry Date: <INPUT type="date"/>
-		<INPUT type="button" value="submit"/>
+	<FORM action="SetTest" method="post">
+		Name: <INPUT type="text" name="user_name"/>
+		Email id: <INPUT type="email" name="user_email"/>
+		Exam Start Date: <INPUT type="date" name="start_date"/>
+		Exam Expiry Date: <INPUT type="date" name="exam_expiry"/>
+		<INPUT type="submit" value="submit"/>
 	</FORM>
 </body>
 </html>

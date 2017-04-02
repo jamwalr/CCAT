@@ -15,10 +15,10 @@
 </head>
 <body>
 
-TEST URL 
+TEST URL:<a href=" 
 <%
 out.print(request.getAttribute("URL"));
-%>
+%>">Exam Url</a>
 </body>
 	</html>
 </jsp:root>

@@ -1,9 +1,9 @@
-create if not exists table user (userid int primary key auto_increment, email varchar, name varchar, scores int);
+create table if not exists users (userid int primary key auto_increment, email varchar(100), name varchar(40));
 
-create if not exists table questions (qid int primary key auto_increment, question varchar, image varchar, correctanswer int );
+create table if not exists questions (qid int primary key auto_increment, question varchar(99) , image varchar(99) , correctanswer int );
 
-create if not exists table test (testid int primary key auto_increment, start date, endDAte date, uid int, scores int );
+create table if not exists exam (testid int primary key auto_increment, start date, endDAte date, uid int, scores int );
 
-create if not exists table answers (id int primary key auto_increment, qid int, text varchar, image varchar);
+create table if not exists answers (id int primary key auto_increment, qid int, text varchar(99) , image varchar(99) );
 
-create if not exists table response (id int primary key auto_increment, uid int, ansid int);
+create table if not exists response (id int primary key auto_increment, uid int, ansid int);

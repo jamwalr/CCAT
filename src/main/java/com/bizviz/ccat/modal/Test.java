@@ -7,35 +7,37 @@ import java.util.Date;
 
 public class Test {
 
+	private int testId;
+	private User user;
+	private Date beginDate;
+	private Date endDate;
+	private boolean attempted;
+	private int finalScore;
+	
 	public Test(User user, String startDate, String expiryDate) {
 		// TODO Auto-generated constructor stub
-		this.uid = user;
+		this.user = user;
 		
 	    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-	    try {
+	    try {System.out.println(startDate);
 	    	this.beginDate = df.parse(startDate);
 	    	this.endDate = df.parse(expiryDate);
 	    } catch (ParseException e) {
 	        e.printStackTrace();
 	    }
 	}
-	private int testId;
-	private User uid;
-	private Date beginDate;
-	private Date endDate;
-	private boolean attempted;
-	private int finalScore;
+	
 	public int getTestId() {
 		return testId;
 	}
 	public void setTestId(int testId) {
 		this.testId = testId;
 	}
-	public User getUid() {
-		return uid;
+	public User getUser() {
+		return user;
 	}
-	public void setUid(User uid) {
-		this.uid = uid;
+	public void setUser(User uid) {
+		this.user = uid;
 	}
 	public Date getBeginDate() {
 		return beginDate;

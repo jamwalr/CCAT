@@ -1,5 +1,11 @@
 package com.bizviz.ccat.db;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,6 +21,23 @@ public class DBConnection {
 	private DBConnection(){
 		Properties prop = new Properties();
 		//prop.load(inStream);
+		FileReader input = null;
+		try {
+			File fil = new File("./config.properties");
+			//fil.createNewFile();
+			System.out.println(fil.getAbsolutePath());
+			//input = new FileReader(fil);
+			prop.load(getClass().getResourceAsStream("config.properties"));
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// load a properties file
+		
 		String dbURl = prop.getProperty("dbUrl");
 		String driver = prop.getProperty("db_driver");
 		String dbPasswd = prop.getProperty("db_pass", "root");
@@ -29,7 +52,7 @@ public class DBConnection {
 	
 	public static DBConnection getInstance(){
 		if(connection == null){
-			synchronized (connection) {
+			synchronized (DBConnection.class) {
 				if (connection == null) {
 					connection = new DBConnection();							
 				}

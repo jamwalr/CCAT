@@ -12,7 +12,7 @@
   </filter>
   <filter-mapping>
   	<filter-name>DBConnec</filter-name>
-  	<url-pattern>/DBConnec</url-pattern>
+  	<url-pattern>/</url-pattern>
   </filter-mapping>
   <servlet>
   	<servlet-name>Set_Test</servlet-name>

@@ -1,5 +1,6 @@
 package com.bizviz.ccat.db;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,8 +10,8 @@ import com.bizviz.ccat.modal.Test;
 public class DataLayer {
 
 	public static boolean createTest(Test test) {
-		String checkUser = "select uid from user where name " + test.getUid().getName() + " and email"
-				+ test.getUid().getEmail();
+		String checkUser = "select userid from users where name ='" + test.getUser().getName() + "' and email ='"
+				+ test.getUser().getEmail()+"'";
 		String inserTest = null;
 		int userId = 0;
 		try {
@@ -18,22 +19,40 @@ public class DataLayer {
 			if (rs.next()) {
 				userId = rs.getInt(1);
 			}
-			test.getUid().setUid(userId);
+			test.getUser().setUid(userId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(userId > 0){
-			inserTest = "insert into test values(0,"+test.getUid().getUid()+",'"+test.getBeginDate()+"','"+test.getEndDate()+"')";
-			
+
+		if (!(userId > 0)) {
+			String insertUser = "insert into users values(0,'"+test.getUser().getEmail()+"','"+test.getUser().getName()+"')";
+
+			try {
+				Statement stat = DBConnection.getInstance().getConnection().createStatement();
+				stat.execute(insertUser, Statement.RETURN_GENERATED_KEYS);
+
+				ResultSet rs = stat.getGeneratedKeys();
+				if (rs.next()) {
+					userId = rs.getInt(1);
+				}
+				test.getUser().setUid(userId);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			inserTest = "insert into exam (start,endDAte,uid) values(" + new Date(test.getBeginDate().getTime()) + ","
+					+ new Date(test.getEndDate().getTime()) + "," + test.getUser().getUid() + ")";
+
 			try {
 				Statement stat = DBConnection.getInstance().getConnection().createStatement();
 				stat.execute(inserTest, Statement.RETURN_GENERATED_KEYS);
-				
+
 				ResultSet rs = stat.getGeneratedKeys();
 				int textId = 0;
-				if(rs.next()){
+				if (rs.next()) {
 					textId = rs.getInt(1);
 				}
 				test.setTestId(textId);
@@ -42,7 +61,7 @@ public class DataLayer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		
 
 		return false;
 	}

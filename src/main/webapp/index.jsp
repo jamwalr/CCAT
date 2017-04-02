@@ -2,8 +2,8 @@
 <body>
 <h2>Hello World!</h2>
 
-<div>Set Test
-<a href="/set_test.jsp"></a>
+<div>
+<a href="set_test.jsp">Set Test</a>
 </div>
 </body>
 </html>
