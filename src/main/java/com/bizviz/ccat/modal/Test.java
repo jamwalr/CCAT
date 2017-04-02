@@ -18,7 +18,7 @@ public class Test {
 		// TODO Auto-generated constructor stub
 		this.user = user;
 		
-	    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+	    DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
 	    try {System.out.println(startDate);
 	    	this.beginDate = df.parse(startDate);
 	    	this.endDate = df.parse(expiryDate);

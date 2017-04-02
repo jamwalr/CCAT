@@ -4,6 +4,18 @@ import java.util.Map;
 
 public class UserResponse {
 
-	private int uid;
+	private Test test;
 	private Map<Question, Answer> userRes;
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
+	}
+	public Map<Question, Answer> getUserRes() {
+		return userRes;
+	}
+	public void setUserRes(Map<Question, Answer> userRes) {
+		this.userRes = userRes;
+	}
 }

@@ -12,7 +12,7 @@
   </filter>
   <filter-mapping>
   	<filter-name>DBConnec</filter-name>
-  	<url-pattern>/</url-pattern>
+  	<url-pattern>/qwer</url-pattern>
   </filter-mapping>
   <servlet>
   	<servlet-name>Set_Test</servlet-name>
@@ -20,8 +20,18 @@
   	<description></description>
   	<servlet-class>com.bizviz.ccat.control.Set_Test</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>BeginTest</servlet-name>
+  	<display-name>BeginTest</display-name>
+  	<description></description>
+  	<servlet-class>com.bizviz.ccat.control.BeginTest</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Set_Test</servlet-name>
   	<url-pattern>/SetTest</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BeginTest</servlet-name>
+  	<url-pattern>/BeginTest</url-pattern>
   </servlet-mapping>
 </web-app>

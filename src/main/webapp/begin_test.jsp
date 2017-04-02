@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-TEST URL:<a href=" 
-<%
-out.print((String)request.getAttribute("URL"));
-%>">Exam Url</a>
+	<form action="BeginTest" method="post">
+		<input type="button" value="submit">
+	</form>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.bizviz.ccat.modal.Test;
+import com.bizviz.ccat.modal.User;
 
 public class DataLayer {
 
@@ -43,8 +44,8 @@ public class DataLayer {
 			}
 		}
 		//DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			inserTest = "insert into exam (start,endDAte,uid) values(" + new Date(test.getBeginDate().getTime()) + ","
-					+ new Date(test.getEndDate().getTime()) + "," + test.getUser().getUid() + ")";
+			inserTest = "insert into exam (start,endDAte,uid) values('" + new Date(test.getBeginDate().getTime()) + "','"
+					+ new Date(test.getEndDate().getTime()) + "'," + test.getUser().getUid() + ")";
 
 			try {
 				Statement stat = DBConnection.getInstance().getConnection().createStatement();
@@ -65,4 +66,33 @@ public class DataLayer {
 
 		return false;
 	}
+	
+	static public User getUser(String uid){
+		String query = "select * from users where userid = "+uid;
+		User user = null;
+		ResultSet rs = null;
+		try {
+			rs = DBConnection.getInstance().query(query);
+			if(rs.next()){
+				int userId = rs.getInt(1);
+				String email = rs.getString(2);
+				String name = rs.getString(3);
+				user = new User(userId,email,name);
+			}
+			return user;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
+	//static public Test
 }
