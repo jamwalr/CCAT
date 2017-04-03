@@ -40,7 +40,7 @@ public class BeginTest extends HttpServlet {
 			User user = DataLayer.getUser(uid);
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			request.setAttribute(null, null);
+			//request.setAttribute(null, null);
 			request.getRequestDispatcher("exam_form.jsp").forward(request, response);
 		}
 		
